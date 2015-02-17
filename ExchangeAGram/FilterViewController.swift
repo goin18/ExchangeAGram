@@ -130,7 +130,6 @@ class FilterViewController: UIViewController, UICollectionViewDataSource, UIColl
         let cgImage:CGImageRef = context.createCGImage(filterImage, fromRect: extent)
         
         let finalImage = UIImage(CGImage: cgImage)
-        //let finalImage = UIImage(CIImage: filterImage)
         
         return finalImage!
     }

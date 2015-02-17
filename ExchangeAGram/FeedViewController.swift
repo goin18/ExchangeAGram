@@ -107,8 +107,11 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         feedItem.caption = "test caption"
         feedItem.thumbNail = thumbNailData
         
-        feedItem.latitude = locationManager.location.coordinate.latitude
-        feedItem.longitude = locationManager.location.coordinate.longitude
+        if locationManager.location != nil {
+            feedItem.latitude = locationManager.location.coordinate.latitude
+            feedItem.longitude = locationManager.location.coordinate.longitude
+
+        }
         
         let UUID = NSUUID().UUIDString
         feedItem.uniqueID = UUID
@@ -141,7 +144,8 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         if feedItem.filtereed == true {
             let returnedImage = UIImage(data: feedItem.image)
-            let image = UIImage(CGImage: returnedImage?.CGImage, scale: 1.0, orientation: UIImageOrientation.Right)
+            let image = UIImage(CGImage: returnedImage?.CGImage, scale: 1.0, orientation: UIImageOrientation.Up)
+            cell.imageView.image = image
         }else{
             cell.imageView.image = UIImage(data: feedItem.image)
         }
